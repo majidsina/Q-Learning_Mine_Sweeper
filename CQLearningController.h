@@ -49,13 +49,18 @@ private:
 	uint _grid_size_x;
 	uint _grid_size_y;
 
-	std::vector<Sweeper> sweepersVector; //vecotr of all the sweepers
+	std::vector<Sweeper> sweepersVector; //vecotr of all the sweepers tables
 
 	//REWARDS//
 	int mineReward = 100;
 	int supermineReward = -10;
 	int rockReward = -1;
 	int emptyBlockReward = 0;
+
+	//FOR Q FUNCTION
+	double learningRate = 0.25;
+	double discountFactor = 0.9;
+	double epsilon = 0.5;
 
 
 public:
@@ -64,6 +69,7 @@ public:
 	double R(uint x, uint y, uint sweeper_no);
 	void clearState(uint x, uint y, uint sweeper_no);
 	virtual bool Update(void);
+	int highestHistoricReturn(State * currentState, bool findMax);
 	virtual ~CQLearningController(void);
 };
 
