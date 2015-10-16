@@ -14,6 +14,22 @@ for a detailed discussion on Q Learning
 */
 #include "CQLearningController.h"
 
+/////////////////////////////////
+//CONSTRUCTORS FOR THE Q TABLE//
+///////////////////////////////
+Action::Action(ROTATION_DIRECTION a) : action(a){}
+
+State::State()
+{
+	stateAction.push_back(Action(NORTH)); // = 1
+	stateAction.push_back(Action(SOUTH)); // = 3
+	stateAction.push_back(Action(EAST)); // = 0
+	stateAction.push_back(Action(WEST)); // = 2
+}
+
+Sweeper::Sweeper(){}
+/////////////////////////////////////////////////////
+
 
 CQLearningController::CQLearningController(HWND hwndMain):
 	CDiscController(hwndMain),
