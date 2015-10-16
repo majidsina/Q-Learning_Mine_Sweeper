@@ -53,8 +53,8 @@ private:
 
 	//REWARDS//
 	int mineReward = 100;
-	int supermineReward = -10;
-	int rockReward = -1;
+	int supermineReward = -100;
+	int rockReward = -100;
 	int emptyBlockReward = 0;
 
 	//FOR Q FUNCTION

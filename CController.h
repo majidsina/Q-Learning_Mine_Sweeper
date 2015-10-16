@@ -62,6 +62,8 @@ protected:
 	int					         m_NumSuperMines;
 	int					         m_NumRocks;
 
+	int							totalMinesCollected;
+
 	//vertex buffer for the sweeper shape's vertices
 	vector<SPoint>		   m_SweeperVB;
 
@@ -77,6 +79,9 @@ protected:
 
 	//keep track of number of deaths per iteration
 	vector<double>		   m_vecDeaths;
+
+	//keep track of total mines collected per iteration
+	vector<double>			m_vecMines;
 
 
 	//pens we use for the stats

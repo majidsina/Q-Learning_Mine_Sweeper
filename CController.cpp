@@ -69,7 +69,6 @@ CController::~CController()
 //------------------------------------------------------------------------
 void CController::PlotStats(HDC surface)
 {
-	
 	string s = "Most MinesGathered last round:       " + ftos((m_vecMostMinesGathered.size() > 0) ? m_vecMostMinesGathered[m_vecMostMinesGathered.size()-1] : 0.0);
 	TextOut(surface, 5, 20, s.c_str(), s.size());
 
@@ -78,6 +77,10 @@ void CController::PlotStats(HDC surface)
     
 	s = "Number of deaths last round: " + ftos((m_vecDeaths.size() > 0) ? m_vecDeaths[m_vecDeaths.size()-1] : 0.0);
 	TextOut(surface, 5, 60, s.c_str(), s.size());
+
+	s = "Number of mines collected last round: " + ftos((m_vecMines.size() > 0) ? m_vecMines[m_vecMines.size() - 1] : 0.0);
+	TextOut(surface, 5, 80, s.c_str(), s.size());
+
     //render the graph
     float HSlice = (float)cxClient/(m_iIterations+1);
 	float VSlice = (float)cyClient/((1)*2);

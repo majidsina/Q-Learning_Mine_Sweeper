@@ -12,6 +12,7 @@ protected:
 
 	//and the mines
 	vector<CDiscCollisionObject*> m_vecObjects;
+
 public:
 	CDiscController(HWND hwndMain);
 	virtual ~CDiscController(void);

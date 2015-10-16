@@ -152,6 +152,7 @@ bool CQLearningController::Update(void)
 		m_iTicks = CParams::iNumTicks;
 	}
 
+
 	///////////////////////////////
 
 	//For each sweeper...
