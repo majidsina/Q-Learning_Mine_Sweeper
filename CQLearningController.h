@@ -59,7 +59,7 @@ private:
 
 	//FOR Q FUNCTION
 	double learningRate = 0.25;
-	double discountFactor = 0.9;
+	double discountFactor = 0.8;
 	double epsilon = 0.5;
 
 
