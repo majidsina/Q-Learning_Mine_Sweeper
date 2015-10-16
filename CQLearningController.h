@@ -62,6 +62,7 @@ public:
 	CQLearningController(HWND hwndMain);
 	virtual void InitializeLearningAlgorithm(void);
 	double R(uint x, uint y, uint sweeper_no);
+	void clearState(uint x, uint y, uint sweeper_no);
 	virtual bool Update(void);
 	virtual ~CQLearningController(void);
 };

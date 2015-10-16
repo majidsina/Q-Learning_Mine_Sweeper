@@ -76,15 +76,61 @@ void CQLearningController::InitializeLearningAlgorithm(void)
 */
 double CQLearningController::R(uint x,uint y, uint sweeper_no){
 	
+	bool checkObj = false;
+
 	//Loop through all the objects to see if one is at the position of the sweeper..
 	for (int i = 0; i < m_vecObjects.size(); ++i)
 	{
+		// get the x, y coordinates of the object on the grid
+		int xPos = m_vecObjects[i]->getPosition().x / CParams::iGridCellDim;
+		int yPos = m_vecObjects[i]->getPosition().y / CParams::iGridCellDim;
 
+		//If the corrdinates of the object is the same as the sweeper...
+		if (xPos == x && yPos == y)
+		{
+			//MINE
+			if (m_vecObjects[i]->getType() == CCollisionObject::Mine)
+			{
+				clearState(x, y, sweeper_no);
+				return mineReward;
+			}
+			//ROCK
+			else if (m_vecObjects[i]->getType() == CCollisionObject::Rock)
+			{
+				return rockReward;
+			}
+			//SUPER MINE
+			else if (m_vecObjects[i]->getType() == CCollisionObject::SuperMine)
+			{
+				clearState(x, y, sweeper_no);
+				return supermineReward;
+			}
+
+			checkObj = true; // object at position of sweeper
+		}
+	}
+
+	//if no object is found in the position of the sweeper
+	if (!checkObj)
+	{
+		return emptyBlockReward;
 	}
 
 	return 0;
 }
+
 /**
+This method is used to clear the state value of a specific block in the q table if a mine/supermine is found on the block.
+Mine/supermine won't be at this position in the future - so stop from moving here
+*/
+void CQLearningController::clearState(uint x, uint y, uint sweeper_no)
+{
+	sweepersVector[sweeper_no].qTable[x][y].stateAction[0].stateValue = 0;
+	sweepersVector[sweeper_no].qTable[x][y].stateAction[1].stateValue = 0;
+	sweepersVector[sweeper_no].qTable[x][y].stateAction[2].stateValue = 0;
+	sweepersVector[sweeper_no].qTable[x][y].stateAction[3].stateValue = 0;
+}
+
 The update method. Main loop body of our Q Learning implementation
 See: Watkins, Christopher JCH, and Peter Dayan. "Q-learning." Machine learning 8. 3-4 (1992): 279-292
 */
