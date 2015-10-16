@@ -38,6 +38,7 @@ struct Sweeper
 
 	int nextAction = 0;
 	State * currentState = NULL;
+	//2D vector representing the qTable
 	std::vector<std::vector<State>> qTable;
 };
 
@@ -47,6 +48,8 @@ class CQLearningController :
 private:
 	uint _grid_size_x;
 	uint _grid_size_y;
+
+	std::vector<Sweeper> sweepersVector; //vecotr of all the sweepers
 public:
 	CQLearningController(HWND hwndMain);
 	virtual void InitializeLearningAlgorithm(void);

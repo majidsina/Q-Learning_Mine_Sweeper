@@ -45,7 +45,29 @@ CQLearningController::CQLearningController(HWND hwndMain):
 */
 void CQLearningController::InitializeLearningAlgorithm(void)
 {
-	//TODO
+	//For each sweeper...
+	for (int i = 0; i < CParams::iNumSweepers; i++)
+	{
+		Sweeper tempSweeper;
+
+		//For each x coord (column)...
+		for (int j = 0; j < _grid_size_x; j++)
+		{
+			//create a vector for a column of the qTable
+			std::vector<State> qTableCol;
+
+			//For each y coord (row)...
+			for (int k = 0; k < _grid_size_y; k++)
+			{
+				//Add state struct to each row in the column
+				qTableCol.push_back(State());
+			}
+			//Add the column to the sweepers Q table
+			tempSweeper.qTable.push_back(qTableCol);
+		}
+		//Add the temporary sweeper to the vecotr of sweepers
+		sweepersVector.push_back(tempSweeper);
+	}
 }
 /**
  The immediate reward function. This computes a reward upon achieving the goal state of
