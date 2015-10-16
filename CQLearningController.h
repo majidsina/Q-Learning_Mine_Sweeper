@@ -50,6 +50,14 @@ private:
 	uint _grid_size_y;
 
 	std::vector<Sweeper> sweepersVector; //vecotr of all the sweepers
+
+	//REWARDS//
+	int mineReward = 100;
+	int supermineReward = -10;
+	int rockReward = -1;
+	int emptyBlockReward = 0;
+
+
 public:
 	CQLearningController(HWND hwndMain);
 	virtual void InitializeLearningAlgorithm(void);

@@ -75,7 +75,13 @@ void CQLearningController::InitializeLearningAlgorithm(void)
  of course for hitting supermines/rocks!
 */
 double CQLearningController::R(uint x,uint y, uint sweeper_no){
-	//TODO: roll your own here!
+	
+	//Loop through all the objects to see if one is at the position of the sweeper..
+	for (int i = 0; i < m_vecObjects.size(); ++i)
+	{
+
+	}
+
 	return 0;
 }
 /**
