@@ -152,12 +152,20 @@ bool CDiscController::Update()
 			ofstream outputDeaths("deaths.txt");
 			outputDeaths << deaths << "\n";
 			outputDeaths.close();
+
+			ofstream outputMines("minesPickup.txt");
+			outputMines << sum << "\n";
+			outputMines.close();
 		}
 		else
 		{
 			ofstream outputDeaths("deaths.txt", std::ofstream::out | std::ofstream::app);
 			outputDeaths << deaths << "\n";
 			outputDeaths.close();
+
+			ofstream outputMines("minesPickup.txt", std::ofstream::out | std::ofstream::app);
+			outputMines << sum << "\n";
+			outputMines.close();
 		}
 		
 
