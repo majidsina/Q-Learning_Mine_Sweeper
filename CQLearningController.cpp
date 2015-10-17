@@ -153,7 +153,7 @@ bool CQLearningController::Update(void)
 	}
 
 	//Lower epsilon over time to reduce sweeper exploration
-	if (m_iIterations % 1000 && epsilon > 0.0)
+	if (m_iIterations%1000==0 && epsilon > 0.0)
 	{
 		epsilon -=0.01;
 		std::cout << "Epsilon = " << epsilon << std::endl;

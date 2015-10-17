@@ -1,4 +1,6 @@
 #include "CDiscController.h"
+#include <iostream>
+#include <fstream>
 
 
 CDiscController::CDiscController(HWND hwndMain):
@@ -144,12 +146,27 @@ bool CDiscController::Update()
 		m_vecDeaths.push_back(deaths);
 		m_vecMines.push_back(sum);
 
+		//WRITE DATA TO FILE//
+		if (m_iIterations == 0)
+		{
+			ofstream outputDeaths("deaths.txt");
+			outputDeaths << deaths << "\n";
+			outputDeaths.close();
+		}
+		else
+		{
+			ofstream outputDeaths("deaths.txt", std::ofstream::out | std::ofstream::app);
+			outputDeaths << deaths << "\n";
+			outputDeaths.close();
+		}
+		
+
 		//increment the iteration counter
 		++m_iIterations;
 
 		//reset cycles
-		m_iTicks = 0;
-	
+		m_iTicks = 0;	
+		
 		//reset the sweepers positions etc
 		for (int i=0; i<m_NumSweepers; ++i)
 		{
