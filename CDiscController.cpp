@@ -149,23 +149,31 @@ bool CDiscController::Update()
 		//WRITE DATA TO FILE//
 		if (m_iIterations == 0)
 		{
-			ofstream outputDeaths("deaths.txt");
+			ofstream outputDeaths("deaths-enironment3.txt");
 			outputDeaths << deaths << "\n";
 			outputDeaths.close();
 
-			ofstream outputMines("minesPickup.txt");
-			outputMines << sum << "\n";
+			ofstream outputMines("AVGMinesPickup-enironment3.txt");
+			outputMines << (sum / float(m_vecSweepers.size())) << "\n";
 			outputMines.close();
+
+			ofstream outputMostMines("mostMineGathered-enironment3.txt");
+			outputMostMines << maxMines << "\n";
+			outputMostMines.close();
 		}
 		else
 		{
-			ofstream outputDeaths("deaths.txt", std::ofstream::out | std::ofstream::app);
+			ofstream outputDeaths("deaths-enironment3.txt", std::ofstream::out | std::ofstream::app);
 			outputDeaths << deaths << "\n";
 			outputDeaths.close();
 
-			ofstream outputMines("minesPickup.txt", std::ofstream::out | std::ofstream::app);
-			outputMines << sum << "\n";
+			ofstream outputMines("AVGMinesPickup-enironment3.txt", std::ofstream::out | std::ofstream::app);
+			outputMines << (sum / float(m_vecSweepers.size())) << "\n";
 			outputMines.close();
+
+			ofstream outputMostMines("mostMineGathered-enironment3.txt", std::ofstream::out | std::ofstream::app);
+			outputMostMines << maxMines << "\n";
+			outputMostMines.close();
 		}
 		
 

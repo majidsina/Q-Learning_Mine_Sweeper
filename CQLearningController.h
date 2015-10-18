@@ -58,8 +58,8 @@ private:
 	int emptyBlockReward = 0;
 
 	//FOR Q FUNCTION
-	double learningRate = 0.25;
-	double discountFactor = 0.8;
+	double learningRate = 0.75;
+	double discountFactor = 0.6;
 	double epsilon = 0.5;
 
 
